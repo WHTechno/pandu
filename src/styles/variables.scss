@@ -145,8 +145,8 @@ $text-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1) !default;
 $text-shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.1) !default;
 
 // Special Shadows
-$primary-shadow: 0 4px 15px transparentize($primary-color, 0.7) !default;
-$accent-shadow: 0 4px 15px transparentize($accent-color, 0.7) !default;
+$primary-shadow: 0 4px 15px rgba($primary-color, 0.4) !default;
+$accent-shadow: 0 4px 15px rgba($accent-color, 0.4) !default;
 $glow-effect: 0 0 10px transparentize($primary-light, 0.5) !default;
 
 // -------------------------
@@ -220,7 +220,7 @@ $blur-md: blur(10px) !default;
 $blur-lg: blur(15px) !default;
 
 // Backdrop Filter
-$backdrop-blur: blur(10px) !default;
+$backdrop-blur: blur(5px) !default;
 $backdrop-brightness: brightness(0.8) !default;
 $backdrop-contrast: contrast(1.2) !default;
 
@@ -230,9 +230,18 @@ $primary-gradient-diagonal: linear-gradient(45deg, $primary-color, $primary-ligh
 $dark-gradient: linear-gradient(to bottom, $darker-color, $dark-color) !default;
 $accent-gradient: linear-gradient(to right, $accent-color, $accent-light) !default;
 
+// Gradient Text (untuk .gradient-text)
+$gradient-text: linear-gradient(to right, $primary-color, $primary-lightest) !default;
+
 // -------------------------
 //         Components
 // -------------------------
+
+// Glassmorphism (untuk kartu, panel)
+$glass-bg: rgba(255, 255, 255, 0.05) !default;
+$glass-border: 1px solid rgba($primary-color, 0.1) !default;
+$glass-blur: blur(5px) !default;
+$glass-shadow: 0 15px 30px rgba($primary-color, 0.1) !default;
 
 // Navbar
 $navbar-height: 80px !default;
@@ -241,8 +250,8 @@ $navbar-background: transparentize($dark-color, 0.1) !default;
 $navbar-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !default;
 
 // Cards
-$card-background: transparentize(white, 0.95) !default;
-$card-border: 1px solid transparentize($primary-color, 0.9) !default;
+$card-background: $glass-bg !default;
+$card-border: $glass-border !default;
 $card-border-radius: $border-radius-lg !default;
 $card-box-shadow: $shadow-md !default;
 $card-padding: $spacing-xl !default;
@@ -259,4 +268,31 @@ $form-input-height: 3rem !default;
 $form-input-padding: 0.75rem 1rem !default;
 $form-input-border: 1px solid $border-color !default;
 $form-input-border-radius: $border-radius-md !default;
-$form-input-background: transparentize(white, 0.95) !default;
+$form-input-background: rgba(255, 255, 255, 0.95) !default;
+
+// -------------------------
+//         Utilities (opsional)
+// -------------------------
+
+.text-muted {
+  color: rgba($text-color, 0.8);
+}
+
+.gradient-text {
+  background: $gradient-text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-glass {
+  background: $glass-bg;
+  border: $glass-border;
+  backdrop-filter: $glass-blur;
+  transition: $btn-transition;
+
+  &:hover {
+    background: rgba($primary-color, 0.1);
+    border-color: rgba($primary-color, 0.3);
+    box-shadow: $glass-shadow;
+  }
+}

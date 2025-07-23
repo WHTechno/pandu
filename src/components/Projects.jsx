@@ -1,154 +1,92 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import '../styles/projects.scss';
 
-const projects = [
-  {
-    id: 1,
-    title: 'E-Commerce Platform',
-    category: 'Web Development',
-    image: 'project1.jpg',
-    description: 'A full-featured online store with payment integration.'
-  },
-  {
-    id: 2,
-    title: 'Fitness Mobile App',
-    category: 'Mobile Development',
-    image: 'project2.jpg',
-    description: 'Workout tracking and nutrition planning application.'
-  },
-  {
-    id: 3,
-    title: 'Corporate Website',
-    category: 'Web Development',
-    image: 'project3.jpg',
-    description: 'Modern corporate website with CMS integration.'
-  },
-  {
-    id: 4,
-    title: 'Social Media Dashboard',
-    category: 'Web Development',
-    image: 'project4.jpg',
-    description: 'Analytics dashboard for social media managers.'
-  },
-  {
-    id: 5,
-    title: 'Healthcare Portal',
-    category: 'Web Development',
-    image: 'project5.jpg',
-    description: 'Patient management system for healthcare providers.'
-  },
-  {
-    id: 6,
-    title: 'AR Shopping App',
-    category: 'Mobile Development',
-    image: 'project6.jpg',
-    description: 'Augmented reality shopping experience.'
-  }
-];
-
-const categories = ['All', 'Web Development', 'Mobile Development'];
-
-const ProjectCard = ({ project, index }) => {
-  const [ref, inView] = useInView({
-    threshold: 0.3,
-    triggerOnce: true
-  });
-
-  const [imageError, setImageError] = useState(false);
-
-  const handleImageError = () => {
-    setImageError(true);
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      className="project-card"
-      initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -10 }}
-    >
-      <div className="project-image">
-        {!imageError ? (
-          <img 
-            src={`/assets/images/${project.image}`} 
-            alt={project.title}
-            onError={handleImageError}
-          />
-        ) : (
-          <div className="placeholder-image">
-            <div className="placeholder-content">
-              <h4>{project.title}</h4>
-              <span>{project.category}</span>
-            </div>
-          </div>
-        )}
-        <div className="project-overlay">
-          <h3>{project.title}</h3>
-          <span>{project.category}</span>
-        </div>
-      </div>
-      <div className="project-info">
-        <p>{project.description}</p>
-        <button className="view-btn">View Project</button>
-      </div>
-    </motion.div>
-  );
+const networks = {
+  Mainnet: [
+    {
+      id: 1,
+      name: 'Axone',
+      image: 'axone.png',
+      explorer: '#',
+      stake: '#',
+    },
+  ],
+  Testnet: [
+    {
+      id: 2,
+      name: 'Story Aenid',
+      image: 'story.png',
+      explorer: '#',
+      stake: '#',
+    },
+    {
+      id: 3,
+      name: 'Lumera',
+      image: 'lumera.png',
+      explorer: '#',
+      stake: '#',
+    },
+    {
+      id: 4,
+      name: 'Kiichain',
+      image: 'kiichain.png',
+      explorer: '#',
+      stake: '#',
+    },
+    {
+      id: 5,
+      name: 'Warden',
+      image: 'warden.png',
+      explorer: '#',
+      stake: '#',
+    },
+  ]
 };
 
+const NetworkCard = ({ name, image, explorer, stake }) => (
+  <motion.div
+    className="network-card"
+    whileHover={{ y: -5 }}
+    transition={{ duration: 0.3 }}
+  >
+    <div className="network-content">
+      <img src={`/assets/images/${image}`} alt={name} className="network-logo" />
+      <h4>{name}</h4>
+      <div className="network-buttons">
+        <a href={explorer} className="btn">Explorer</a>
+        <a href={stake} className="btn primary">Stake</a>
+        <button className="btn icon">
+          <span role="img" aria-label="settings">⚙️</span>
+        </button>
+      </div>
+    </div>
+  </motion.div>
+);
+
 const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState('All');
-  const [ref, inView] = useInView({
-    threshold: 0.3,
-    triggerOnce: true
-  });
-
-  const filteredProjects = activeCategory === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === activeCategory);
-
   return (
     <section id="projects" className="projects-section">
       <div className="container">
-        <motion.div
-          className="section-header"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2>Our <span className="gradient-text">Projects</span></h2>
-          <p>Explore our portfolio of successful digital solutions.</p>
-        </motion.div>
-
-        <div className="project-filters">
-          {categories.map(category => (
-            <button
-              key={category}
-              className={activeCategory === category ? 'active' : ''}
-              onClick={() => setActiveCategory(category)}
-            >
-              {category}
-            </button>
-          ))}
+        <div className="section-block">
+          <h2>Supported <span className="gradient-text">Mainnets</span></h2>
+          <p>Mainnet networks actively supported by WHTech</p>
+          <div className="networks-grid">
+            {networks.Mainnet.map(net => (
+              <NetworkCard key={net.id} {...net} />
+            ))}
+          </div>
         </div>
 
-        <motion.div
-          ref={ref}
-          className="projects-grid"
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={{
-            visible: { transition: { staggerChildren: 0.1 } }
-          }}
-        >
-          {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
-        </motion.div>
+        <div className="section-block">
+          <h2>Supported <span className="gradient-text">Testnets</span></h2>
+          <p>Testnet networks currently under support and monitoring</p>
+          <div className="networks-grid">
+            {networks.Testnet.map(net => (
+              <NetworkCard key={net.id} {...net} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

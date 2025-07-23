@@ -25,8 +25,8 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h1>
-            <span className="gradient-text">Launch</span> Your Digital Presence
-            <br /> to New Heights
+            <span className="gradient-text">Validator</span> Node Services
+            <br /> Everywhere
           </h1>
           <p>
             We build innovative digital solutions that propel your business

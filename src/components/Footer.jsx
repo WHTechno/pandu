@@ -19,7 +19,7 @@ const Footer = () => {
           <div className="footer-brand">
             <div className="logo">
               <FaRocket className="rocket-icon" />
-              <span>ITRocket</span>
+              <span>PAMANSTRA</span>
             </div>
             <p>Launching your digital presence to new heights with innovative solutions.</p>
             <div className="social-links">
@@ -64,7 +64,7 @@ const Footer = () => {
         </motion.div>
 
         <div className="footer-bottom">
-          <p>&copy; {currentYear} ITRocket. All Rights Reserved.</p>
+          <p>&copy; {currentYear} PAMANSTRA. All Rights Reserved.</p>
           <div className="legal-links">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>

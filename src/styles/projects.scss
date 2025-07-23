@@ -1,157 +1,116 @@
 @import 'variables';
+
 .projects-section {
-  background: $darker-color;
-}
+  background: linear-gradient(to bottom, $dark-color, $darker-color);
+  position: relative;
+  padding: 80px 0;
 
-.project-filters {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 40px;
-  
-  button {
-    padding: 8px 20px;
-    background: transparent;
-    border: 1px solid $primary-color;
-    color: $text-color;
-    border-radius: 50px;
-    cursor: pointer;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/assets/images/dots-pattern.png') repeat;
+    opacity: 0.05;
+    z-index: -1;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  p {
+    text-align: center;
+    color: rgba($text-color, 0.8);
+    margin-bottom: 40px;
+  }
+
+  .gradient-text {
+    background: linear-gradient(to right, $primary-color, $primary-lightest);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .section-block {
+    margin-bottom: 80px;
+  }
+
+  .networks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .network-card {
+    background: rgba(white, 0.05);
+    border-radius: 15px;
+    padding: 40px 30px;
+    text-align: center;
+    border: 1px solid rgba($primary-color, 0.1);
+    backdrop-filter: blur(5px);
     transition: all 0.3s ease;
-    
-    &:hover, &.active {
-      background: $primary-color;
-      color: white;
-      box-shadow: 0 5px 15px rgba($primary-color, 0.3);
-    }
-  }
-}
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 30px;
-}
+    &:hover {
+      transform: translateY(-10px);
+      background: rgba($primary-color, 0.1);
+      box-shadow: 0 15px 30px rgba($primary-color, 0.1);
+      border-color: rgba($primary-color, 0.3);
+    }
 
-.project-card {
-  background: rgba(white, 0.03);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  border: 1px solid rgba($primary-color, 0.1);
-  
-  .project-image {
-    position: relative;
-    height: 250px;
-    overflow: hidden;
-    
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
+    .network-logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 20px;
     }
-    
-    .placeholder-image {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, $primary-color, $accent-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      
-      .placeholder-content {
-        text-align: center;
-        color: white;
-        
-        h4 {
-          font-size: 1.2rem;
-          margin-bottom: 5px;
-        }
-        
-        span {
-          font-size: 0.9rem;
-          opacity: 0.8;
-        }
-      }
-    }
-    
-    .project-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to top, rgba($dark-color, 0.9), transparent);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 20px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      
-      h3 {
-        color: white;
-        margin-bottom: 5px;
-      }
-      
-      span {
-        color: $accent-color;
-        font-size: 0.9rem;
-      }
-    }
-  }
-  
-  .project-info {
-    padding: 20px;
-    
-    p {
+
+    h4 {
+      font-size: 1.5rem;
       margin-bottom: 15px;
-      font-size: 0.95rem;
-      color: rgba($text-color, 0.8);
-    }
-    
-    .view-btn {
-      background: transparent;
       color: $accent-color;
-      border: none;
-      padding: 8px 0;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      transition: all 0.3s ease;
-      
-      &::after {
-        content: '→';
-        margin-left: 5px;
-        transition: margin-left 0.3s ease;
-      }
-      
-      &:hover {
-        color: $light-color;
-        
-        &::after {
-          margin-left: 10px;
+    }
+
+    .network-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+
+      .btn {
+        padding: 10px 20px;
+        border-radius: 30px;
+        border: 1px solid rgba($primary-color, 0.2);
+        background: rgba(white, 0.05);
+        color: white;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(3px);
+
+        &:hover {
+          background: rgba($primary-color, 0.2);
+          border-color: rgba($primary-color, 0.4);
+        }
+
+        &.primary {
+          background: rgba($primary-color, 0.2);
+          border-color: rgba($primary-color, 0.4);
+        }
+
+        &.icon {
+          width: 40px;
+          height: 40px;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2rem;
         }
       }
     }
-  }
-  
-  &:hover {
-    .project-image {
-      img {
-        transform: scale(1.1);
-      }
-      
-      .project-overlay {
-        opacity: 1;
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
   }
 }

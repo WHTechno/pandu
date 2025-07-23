@@ -112,7 +112,7 @@ const Team = () => {
           viewport={{ once: true }}
         >
           <h2>Our <span className="gradient-text">Team</span></h2>
-          <p>Meet the talented individuals behind ITRocket's success.</p>
+          <p>Meet the talented individuals behind PAMANSTRA's success.</p>
         </motion.div>
 
         <div className="team-grid">
