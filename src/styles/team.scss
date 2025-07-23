@@ -1,0 +1,75 @@
+@import 'variables';
+.team-section {
+  background: linear-gradient(to bottom, $dark-color, $darker-color);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.team-card {
+  background: rgba(white, 0.03);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba($primary-color, 0.1);
+  
+  .team-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .social-links {
+      position: absolute;
+      bottom: -60px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 15px;
+      background: rgba($dark-color, 0.8);
+      transition: bottom 0.3s ease;
+      
+      a {
+        color: $text-color;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+        
+        &:hover {
+          color: $accent-color;
+        }
+      }
+    }
+  }
+  
+  .team-info {
+    padding: 20px;
+    
+    h3 {
+      margin-bottom: 5px;
+    }
+    
+    p {
+      color: $accent-color;
+      font-size: 0.9rem;
+    }
+  }
+  
+  &:hover {
+    .team-image {
+      .social-links {
+        bottom: 0;
+      }
+    }
+  }
+}

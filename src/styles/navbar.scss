@@ -1,0 +1,107 @@
+@import 'variables';
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background: transparent;
+  
+  &.scrolled {
+    background: rgba($dark-color, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    
+    .rocket-icon {
+      margin-right: 10px;
+      color: $accent-color;
+      font-size: 1.8rem;
+    }
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    
+    a {
+      position: relative;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      
+      &:hover {
+        color: $accent-color;
+      }
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, $primary-color, $accent-color);
+        transition: width 0.3s ease;
+      }
+      
+      &:hover::after {
+        width: 100%;
+      }
+    }
+    
+    &.active {
+      transform: translateX(0);
+    }
+  }
+  
+  .hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    z-index: 1001;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      height: 100vh;
+      background: rgba($dark-color, 0.95);
+      backdrop-filter: blur(10px);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: right 0.5s ease;
+      z-index: 1000;
+      
+      &.active {
+        right: 0;
+      }
+    }
+    
+    .hamburger {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,109 @@
+@import 'variables.scss';
+.contact-section {
+  background: $darker-color;
+  padding: 80px 20px;
+  color: $text-color;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 50px;
+}
+
+.contact-info {
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+
+    .info-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba($primary-color, 0.1);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 20px;
+      color: $accent-color;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .info-text {
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+        color: $text-color;
+      }
+
+      p {
+        color: rgba($text-color, 0.8);
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+.contact-form {
+  .form-group {
+    margin-bottom: 20px;
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba($primary-color, 0.3);
+      border-radius: 5px;
+      color: $text-color;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: $accent-color;
+        box-shadow: 0 0 10px rgba($accent-color, 0.2);
+      }
+
+      &::placeholder {
+        color: rgba($text-color, 0.5);
+      }
+    }
+
+    textarea {
+      height: 150px;
+      resize: vertical;
+    }
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to right, $primary-color, $accent-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .send-icon {
+      margin-left: 10px;
+    }
+
+    &:hover {
+      background: linear-gradient(
+        to right,
+        darken($primary-color, 5%),
+        darken($accent-color, 5%)
+      );
+      box-shadow: 0 5px 15px rgba($accent-color, 0.3);
+    }
+  }
+}

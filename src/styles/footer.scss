@@ -1,0 +1,202 @@
+@import 'variables.scss';
+.footer {
+  background: $dark-color;
+  padding: 80px 0 0;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, $primary-color, transparent);
+  }
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.footer-brand {
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+    
+    .rocket-icon {
+      margin-right: 10px;
+      color: $accent-color;
+      font-size: 1.8rem;
+    }
+  }
+  
+  p {
+    color: rgba($text-color, 0.7);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 15px;
+    
+    a {
+      width: 40px;
+      height: 40px;
+      background: rgba(white, 0.05);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $text-color;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: $primary-color;
+        color: white;
+        transform: translateY(-3px);
+      }
+    }
+  }
+}
+
+.footer-links {
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(to right, $primary-color, $accent-color);
+    }
+  }
+  
+  ul {
+    list-style: none;
+    
+    li {
+      margin-bottom: 10px;
+      
+      a {
+        color: rgba($text-color, 0.7);
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          color: $accent-color;
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+.footer-newsletter {
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(to right, $primary-color, $accent-color);
+    }
+  }
+  
+  p {
+    color: rgba($text-color, 0.7);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    
+    input {
+      flex: 1;
+      padding: 12px 15px;
+      background: rgba(white, 0.05);
+      border: 1px solid rgba($primary-color, 0.3);
+      border-radius: 5px 0 0 5px;
+      color: $text-color;
+      font-size: 0.95rem;
+      
+      &:focus {
+        outline: none;
+        border-color: $accent-color;
+      }
+    }
+    
+    button {
+      padding: 0 20px;
+      background: linear-gradient(to right, $primary-color, $accent-color);
+      color: white;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: linear-gradient(to right, darken($primary-color, 5%), darken($accent-color, 5%));
+      }
+    }
+  }
+}
+
+.footer-bottom {
+  padding: 20px 0;
+  border-top: 1px solid rgba(white, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  p {
+    color: rgba($text-color, 0.5);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  
+  .legal-links {
+    display: flex;
+    gap: 20px;
+    
+    a {
+      color: rgba($text-color, 0.5);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}
