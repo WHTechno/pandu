@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
@@ -57,6 +57,12 @@ const TeamMember = ({ member, index }) => {
     triggerOnce: true
   });
 
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   return (
     <motion.div
       ref={ref}
@@ -67,7 +73,19 @@ const TeamMember = ({ member, index }) => {
       whileHover={{ scale: 1.05 }}
     >
       <div className="team-image">
-        <img src={`/assets/images/${member.image}`} alt={member.name} />
+        {!imageError ? (
+          <img 
+            src={`/assets/images/${member.image}`} 
+            alt={member.name}
+            onError={handleImageError}
+          />
+        ) : (
+          <div className="placeholder-avatar">
+            <div className="avatar-initials">
+              {member.name.split(' ').map(n => n[0]).join('')}
+            </div>
+          </div>
+        )}
         <div className="social-links">
           <a href={member.social.twitter}><FaTwitter /></a>
           <a href={member.social.linkedin}><FaLinkedin /></a>

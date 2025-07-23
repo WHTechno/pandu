@@ -56,6 +56,12 @@ const ProjectCard = ({ project, index }) => {
     triggerOnce: true
   });
 
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   return (
     <motion.div
       ref={ref}
@@ -66,7 +72,20 @@ const ProjectCard = ({ project, index }) => {
       whileHover={{ y: -10 }}
     >
       <div className="project-image">
-        <img src={`/assets/images/${project.image}`} alt={project.title} />
+        {!imageError ? (
+          <img 
+            src={`/assets/images/${project.image}`} 
+            alt={project.title}
+            onError={handleImageError}
+          />
+        ) : (
+          <div className="placeholder-image">
+            <div className="placeholder-content">
+              <h4>{project.title}</h4>
+              <span>{project.category}</span>
+            </div>
+          </div>
+        )}
         <div className="project-overlay">
           <h3>{project.title}</h3>
           <span>{project.category}</span>

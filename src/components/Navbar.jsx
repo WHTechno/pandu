@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaRocket, FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import '../styles/navbar.scss';
 
@@ -42,8 +42,8 @@ const Navbar = () => {
     >
       <div className="container">
         <Link to="/" className="logo">
-          <FaRocket className="rocket-icon" />
-          <span>ITRocket</span>
+          <img src="/assets/images/pamanstra-logo.svg" alt="PAMANSTRA" className="logo-icon" />
+          <span>PAMANSTRA</span>
         </Link>
 
         <div className={`nav-links ${isOpen ? 'active' : ''}`}>
